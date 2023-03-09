@@ -14,4 +14,9 @@ class Company extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function isStripeCustomer(): bool
+    {
+        return !is_null($this->stripe_id);
+    }
 }
