@@ -41,5 +41,5 @@ Route::controller(CheckoutController::class)
     ->as('checkout.')
     ->prefix('checkout')
     ->group(function () {
-        Route::get('checkout', 'index')->name('index');
+        Route::get('/', 'index')->name('index');
     });
