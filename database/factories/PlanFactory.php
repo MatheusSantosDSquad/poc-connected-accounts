@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\PlanInterval;
 use App\Models\Plan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -16,8 +17,10 @@ class PlanFactory extends Factory
     public function definition(): array
     {
         return [
-            'plan'  => 'Basic Plan',
-            'price' => 30,
+            'name'           => 'Basic Plan',
+            'price'          => 30,
+            'interval'       => PlanInterval::MONTHLY,
+            'interval_count' => 1,
         ];
     }
 }

@@ -10,8 +10,13 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
-            $table->string('plan');
+            $table->string('name')->unique();
             $table->integer('price');
+            $table->string('interval')->nullable();
+            $table->integer('interval_count')->nullable();
+            $table->string('stripe_product_id')->nullable()->index();
+            $table->string('stripe_price_id')->nullable()->index();
+            $table->boolean('recurring')->default(true);
             $table->timestamps();
         });
     }
