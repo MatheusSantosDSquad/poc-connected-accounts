@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\FeeType;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Cashier\Billable;
@@ -15,9 +17,16 @@ class Company extends Model
         'name',
         'email',
         'stripe_account',
-        'has_account_details'
+        'has_account_details',
+        'fee',
+        'fee_type',
     ];
 
+    protected $casts = [
+        'fee_type' => FeeType::class,
+    ];
+
+    # region Helpers
     public function isStripeCustomer(): bool
     {
         return !is_null($this->stripe_id);
@@ -32,4 +41,15 @@ class Company extends Model
     {
         return $this->has_account_details;
     }
+    # endregion
+
+    # region Accessors / Mutators
+    protected function fee()
+    {
+        return Attribute::make(
+            get: fn (?int $value) => ($value) ? $value / 100 : null,
+            set: fn (mixed $value) => ($value) ? $value * 100 : null
+        );
+    }
+    # endregion
 }
