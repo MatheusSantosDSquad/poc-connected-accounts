@@ -42,6 +42,9 @@ class Company extends Model
         return $this->has_account_details;
     }
 
+    /**
+     * Nesse caso, o valor passado é em centavos, para faciltar
+     */
     public function calculateFeeAmount(int $value): int
     {
         if ($this->fee_type == FeeType::VALUE) {
