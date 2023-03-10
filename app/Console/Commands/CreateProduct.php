@@ -21,8 +21,8 @@ class CreateProduct extends Command
         $stripePrice = $this->createPrice($plan);
 
         $plan->update([
-            'stripe_product_id' => $stripePrice->product,
-            'stripe_price_id'   => $stripePrice->id,
+            'stripe_product' => $stripePrice->product,
+            'stripe_price'   => $stripePrice->id,
         ]);
 
         return self::SUCCESS;
