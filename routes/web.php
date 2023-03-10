@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StripeConnectorController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,12 @@ Route::controller(SubscriptionController::class)
         Route::get('/', 'index')->name('index');
         Route::post('subscribe', 'subscribe')->name('subscribe');
         Route::get('/success', 'success')->name('success');
+    });
+
+Route::controller(StripeConnectorController::class)
+    ->as('stripe-connector.')
+    ->prefix('stripe-connector')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/return', 'return')->name('return');
     });
