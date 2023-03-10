@@ -9,4 +9,6 @@
             {{ $slot }}
         </div>
     </body>
+
+    {{ $scripts }}
 </html>
