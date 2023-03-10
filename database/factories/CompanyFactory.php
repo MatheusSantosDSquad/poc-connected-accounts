@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\FeeType;
 use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,8 +19,10 @@ class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'  => $this->faker->company,
-            'email' => $this->faker->email,
+            'name'     => $this->faker->company,
+            'email'    => $this->faker->email,
+            'fee'      => $this->faker->numberBetween(1, 10),
+            'fee_type' => FeeType::random(),
         ];
     }
 }
