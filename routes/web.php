@@ -23,4 +23,5 @@ Route::controller(SubscriptionController::class)
     ->prefix('subscription')
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::post('subscribe', 'subscribe')->name('subscribe');
     });

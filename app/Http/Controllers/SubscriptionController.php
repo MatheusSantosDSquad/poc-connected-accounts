@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
@@ -14,5 +15,13 @@ class SubscriptionController extends Controller
         return view('subscription.index', [
             'intent' => $company->createSetupIntent(),
         ]);
+    }
+
+    public function subscribe(Request $request)
+    {
+        $company = Company::first();
+        $company->updateDefaultPaymentMethod($request->payment_method);
+
+        return $request->all();
     }
 }
