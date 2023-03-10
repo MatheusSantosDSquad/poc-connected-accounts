@@ -14,8 +14,8 @@ return new class extends Migration
             $table->integer('price');
             $table->string('interval')->nullable();
             $table->integer('interval_count')->nullable();
-            $table->string('stripe_product_id')->nullable()->index();
-            $table->string('stripe_price_id')->nullable()->index();
+            $table->string('stripe_product')->nullable()->index();
+            $table->string('stripe_price')->nullable()->index();
             $table->boolean('recurring')->default(true);
             $table->timestamps();
         });

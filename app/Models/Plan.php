@@ -16,8 +16,8 @@ class Plan extends Model
         'price',
         'interval',
         'interval_count',
-        'stripe_product_id',
-        'stripe_price_id',
+        'stripe_product',
+        'stripe_price',
         'recurring',
     ];
 
