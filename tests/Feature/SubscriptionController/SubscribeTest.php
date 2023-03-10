@@ -13,8 +13,7 @@ it('should attach a new payment method on customer', function () {
     $plan    = Plan::first();
 
     postJson(route('subscription.subscribe'), ['payment_method' => 'pm_1MjowVBsO6X9dLQ6cs8T4siH'])
-        ->assertRedirectToRoute('subscription.index')
-        ->assertSee('You have been subscribed successfully');
+        ->assertRedirectToRoute('subscription.success');
 
     $company->refresh();
 
