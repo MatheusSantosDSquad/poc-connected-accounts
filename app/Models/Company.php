@@ -12,11 +12,18 @@ class Company extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'email',
+        'stripe_account'
     ];
 
     public function isStripeCustomer(): bool
     {
         return !is_null($this->stripe_id);
+    }
+
+    public function hasConnectedAccount(): bool
+    {
+        return !is_null($this->stripe_account);
     }
 }
