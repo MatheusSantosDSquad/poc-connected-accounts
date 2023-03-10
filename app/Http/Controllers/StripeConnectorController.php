@@ -38,6 +38,15 @@ class StripeConnectorController extends Controller
             ->accounts
             ->retrieve($company->stripe_account);
 
-        dd($account);
+        if (!$account->details_submitted && !$account->charges_enabled) {
+            // Neste caso, devemos mandar ele novamente para a tela do stripe para que complete o fluxo
+            return view('stripe-connector.return', ['message' => 'Seu onboarding não está completo. Por favor, repita a operação']);
+        }
+
+        $company->update([
+            'has_account_details' => true,
+        ]);
+
+        return view('stripe-connector.return', ['message' => 'Você fez o onboarding no stripe. Parabéns!']);
     }
 }
