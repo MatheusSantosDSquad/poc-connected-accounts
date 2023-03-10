@@ -8,6 +8,7 @@ use Laravel\Cashier\Cashier;
 use Stripe\Account;
 
 /**
+ * @see https://stripe.com/docs/api/accounts/create
  * @see https://stripe.com/docs/connect/collect-then-transfer-guide?platform=web
  */
 class CreateCustomer extends Command
