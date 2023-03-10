@@ -14,7 +14,8 @@ class Company extends Model
     protected $fillable = [
         'name',
         'email',
-        'stripe_account'
+        'stripe_account',
+        'has_account_details'
     ];
 
     public function isStripeCustomer(): bool
@@ -25,5 +26,10 @@ class Company extends Model
     public function hasConnectedAccount(): bool
     {
         return !is_null($this->stripe_account);
+    }
+
+    public function hasAccountDetails(): bool
+    {
+        return $this->has_account_details;
     }
 }
