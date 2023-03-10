@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Cashier\Billable;
-use function Pest\Laravel\put;
 
 class Company extends Model
 {
@@ -46,10 +45,10 @@ class Company extends Model
     public function calculateFeeAmount(int $value): int
     {
         if ($this->fee_type == FeeType::VALUE) {
-            return $this->getOriginal('fee');
+            return $this->getRawOriginal('fee');
         }
 
-        return number_format(($value / 100) * $this->fee, 2) * 100;
+        return ($value / 100) * $this->fee;
     }
     # endregion
 
