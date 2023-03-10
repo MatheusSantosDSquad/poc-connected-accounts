@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\StripeConnectorController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,11 @@ Route::controller(StripeConnectorController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/return', 'return')->name('return');
+    });
+
+Route::controller(CheckoutController::class)
+    ->as('checkout.')
+    ->prefix('checkout')
+    ->group(function () {
+        Route::get('checkout', 'index')->name('index');
     });
