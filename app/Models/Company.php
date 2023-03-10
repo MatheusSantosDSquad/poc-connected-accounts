@@ -6,6 +6,7 @@ use App\Enums\FeeType;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Cashier\Billable;
 
 class Company extends Model
@@ -62,6 +63,13 @@ class Company extends Model
             get: fn (?int $value) => ($value) ? $value / 100 : null,
             set: fn (mixed $value) => ($value) ? $value * 100 : null
         );
+    }
+    # endregion
+
+    # region Relationships
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
     }
     # endregion
 }
