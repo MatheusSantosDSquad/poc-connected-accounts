@@ -2,6 +2,7 @@
 
 use App\Enums\FeeType;
 use App\Models\Company;
+
 use function PHPUnit\Framework\assertEquals;
 
 it('should calculate percentage fee', function () {

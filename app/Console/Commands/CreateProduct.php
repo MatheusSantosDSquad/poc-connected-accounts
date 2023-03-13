@@ -5,8 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Plan;
 use Illuminate\Console\Command;
 use Laravel\Cashier\Cashier;
-use Stripe\Price;
-use Stripe\StripeClient;
+use Stripe\{Price, StripeClient};
 
 class CreateProduct extends Command
 {

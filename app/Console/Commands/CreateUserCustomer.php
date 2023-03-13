@@ -2,8 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Company;
-use App\Models\User;
+use App\Models\{Company, User};
 use Illuminate\Console\Command;
 
 class CreateUserCustomer extends Command

@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\StripeConnectorController;
-use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\{CheckoutController, StripeConnectorController, SubscriptionController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,4 +40,6 @@ Route::controller(CheckoutController::class)
     ->prefix('checkout')
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('success', 'success')->name('success');
+        Route::get('error', 'checkoutError')->name('error');
     });

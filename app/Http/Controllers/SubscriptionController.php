@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\{Company, Plan};
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Http\{RedirectResponse, Request};
 
 class SubscriptionController extends Controller
 {
@@ -26,7 +25,8 @@ class SubscriptionController extends Controller
         $company->updateDefaultPaymentMethod($request->payment_method);
 
         $company->newSubscription(
-            $plan->name, $plan->stripe_price
+            $plan->name,
+            $plan->stripe_price
         )->create($request->payment_method);
 
         return redirect()->route('subscription.success');

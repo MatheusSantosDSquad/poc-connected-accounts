@@ -1,11 +1,9 @@
 <?php
 
-use App\Models\Company;
-use App\Models\Plan;
-use Laravel\Cashier\Subscription;
-use Laravel\Cashier\SubscriptionItem;
-use function Pest\Laravel\assertDatabaseHas;
-use function Pest\Laravel\postJson;
+use App\Models\{Company, Plan};
+use Laravel\Cashier\{Subscription, SubscriptionItem};
+
+use function Pest\Laravel\{assertDatabaseHas, postJson};
 use function PHPUnit\Framework\assertTrue;
 
 it('should attach a new payment method on customer', function () {
