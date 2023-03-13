@@ -37,7 +37,11 @@
                 if (error) {
                     alert('an error occurred')
                 } else {
-                    console.log(setupIntent);
+                    await window.axios.post('{{ route('subscription.subscribe') }}', {
+                        payment_method: setupIntent.payment_method
+                    });
+
+                    alert('You have been subscribed successfully!')
                 }
             });
         </script>

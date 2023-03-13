@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\{Company, Plan};
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\{RedirectResponse, Request};
+use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
 
 class SubscriptionController extends Controller
 {
@@ -17,9 +17,9 @@ class SubscriptionController extends Controller
         ]);
     }
 
-    public function subscribe(Request $request): RedirectResponse
+    public function subscribe(Request $request): JsonResponse
     {
-        $company = Company::first();
+        $company = Company::latest()->first();
         $plan    = Plan::first();
 
         $company->updateDefaultPaymentMethod($request->payment_method);
@@ -29,11 +29,6 @@ class SubscriptionController extends Controller
             $plan->stripe_price
         )->create($request->payment_method);
 
-        return redirect()->route('subscription.success');
-    }
-
-    public function success(): View
-    {
-        return view('subscription.success');
+        return response()->json(status: 201);
     }
 }

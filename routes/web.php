@@ -24,7 +24,6 @@ Route::controller(SubscriptionController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('subscribe', 'subscribe')->name('subscribe');
-        Route::get('/success', 'success')->name('success');
     });
 
 Route::controller(StripeConnectorController::class)
