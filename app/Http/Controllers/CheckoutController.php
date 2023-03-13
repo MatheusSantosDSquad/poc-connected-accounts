@@ -6,6 +6,9 @@ use App\Models\{Company, User};
 use Illuminate\Http\Request;
 use Laravel\Cashier\{Cashier, Checkout};
 
+/**
+ * @see https://stripe.com/docs/connect/collect-then-transfer-guide?platform=web
+ */
 class CheckoutController extends Controller
 {
     public function index(): Checkout
